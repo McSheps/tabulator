@@ -145,6 +145,22 @@ Page.prototype.setMaxPage = function(max){
 
 //set current page number
 Page.prototype.setPage = function(page){
+	var self = this;
+        switch (page) {
+            case 'first':
+                self.setPage(1);
+                return true;
+            case 'prev':
+                self.previousPage();
+                return true;
+            case 'next':
+                self.nextPage();
+                return true;
+            case 'last':
+                self.nextPage();
+                return true;
+        }
+	
 	if(page > 0 && page <= this.max){
 		this.page = page;
 		this.trigger();
